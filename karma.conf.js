@@ -1,27 +1,20 @@
 var isparta = require('isparta');
-var istanbul = require('browserify-istanbul');
 
 module.exports = function (config) {
 	config.set({
-		frameworks: ['mocha', 'chai', 'browserify'],
+		frameworks: ['jspm', 'mocha', 'chai'],
+
+		jspm: {
+			loadFiles: ['src/**/*.js', 'test/**/*.js']
+		},
 
 		files: [
-			'node_modules/metaljs/node_modules/closure-templates/soyutils.js',
-			'src/**/*.js',
-			'test/**/*.js'
+			'node_modules/metaljs/node_modules/closure-templates/soyutils.js'
 		],
 
 		preprocessors: {
-			'src/**/*.js': ['browserify'],
-			'test/**/*.js': ['browserify']
-		},
-
-		browserify: {
-			transform: [istanbul({
-				defaultIgnore: false,
-				instrumenter: isparta
-			})],
-			debug: true
+			'src/**/!(*.soy).js': ['coverage'],
+			'jspm_packages/?*/**/*.js': ['babel']
 		},
 
 		browsers: ['Chrome'],
@@ -29,11 +22,12 @@ module.exports = function (config) {
 		reporters: ['coverage', 'progress'],
 
 		coverageReporter: {
-			ignore: ['**/bower_components/**', '**/test/**', '**/*.soy.js'],
+			instrumenters: { isparta: isparta },
+			instrumenter: { '**/*.js': 'isparta' },
 			reporters: [
-				{type: 'text-summary'},
 				{type: 'html'},
-				{ type: 'lcov', subdir: 'lcov' }
+				{type: 'text-summary'},
+				{type: 'lcov', subdir: 'lcov'}
 			]
 		}
 	});

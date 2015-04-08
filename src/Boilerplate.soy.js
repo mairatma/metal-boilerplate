@@ -1,5 +1,5 @@
 /* jshint ignore:start */
-import ComponentRegistry from '../bower_components/metaljs/src/component/ComponentRegistry';
+import ComponentRegistry from 'metaljs/src/component/ComponentRegistry';
 var Templates = ComponentRegistry.Templates;
 // This file was automatically generated from Boilerplate.soy.
 // Please don't edit this file by hand.

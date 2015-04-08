@@ -1,7 +1,7 @@
 import core from 'metaljs/src/core';
 import SoyComponent from 'metaljs/src/soy/SoyComponent';
 import ComponentRegistry from 'metaljs/src/component/ComponentRegistry';
-import './Boilerplate.soy.js';
+import './Boilerplate.soy';
 
 /**
  * Boilerplate component.
