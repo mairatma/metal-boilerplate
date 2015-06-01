@@ -8,22 +8,19 @@ import './Boilerplate.soy.js';
  */
 class Boilerplate extends SoyComponent {
 	/**
-	 * @inheritDoc
-	 */
-	constructor(opt_config) {
-		super(opt_config);
-	}
-
-	/**
 	 * Lifecycle. Creation phase of the component happens once after the
 	 * component is instantiated, therefore its the initial phase of the
 	 * component Lifecycle. Be conscious about actions performed in this phase
 	 * to not compromise instantiation time with operations that can be
 	 * postponed to further phases. It's recommended to bind component custom
-	 * events in this phase, in contrast to DOM events that must be bind on
+	 * events in this phase, in contrast to DOM events that must be bound on
 	 * attach phase.
+	 * @param {!Object} opt_config An object with the initial values for this component's
+	 *   attributes.
+	 * @override
 	 */
-	created() {
+	constructor(opt_config) {
+		super(opt_config);
 	}
 
 	/**
